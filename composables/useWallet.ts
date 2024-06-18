@@ -1,5 +1,6 @@
 import { useOnboard} from "@web3-onboard/vue";
 import {ethers} from "ethers";
+import {asyncComputed} from "@vueuse/core";
 
 export const useWallet = () => {
   const {connectedWallet} = useOnboard();
@@ -21,8 +22,6 @@ export const useWallet = () => {
       }catch (e) {
         console.error(e)
       }
-
-
     }
 
   }

@@ -37,6 +37,8 @@ web3Onboard.value = init({
     <Header/>
     <main class="content p-1 md:p-3 lg:p-7 h-80">
       <NuxtPage/>
+      <UNotifications/>
+
     </main>
     <Footer/>
   </div>
