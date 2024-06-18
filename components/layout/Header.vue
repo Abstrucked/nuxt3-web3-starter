@@ -22,7 +22,7 @@ const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
           <div class="w-full flex flex-between md:w-auto">
             <div class="flex flex-row flex-auto w-full items-center justify-around lg:justify-start lg:w-50">
               <picture class="logo md:flex flex-start">
-<!--                <NuxtImg src="images/logo.png" alt="Hatchlings Logo"/>-->
+                <NuxtImg src="logo_base_64x64.png" alt="Logo" width="64" height="64"/>
               </picture>
               <button v-show="isMobile || isTablet" @click="toggleMenu">
                 <UIcon :name="isMenuOpen ? 'ep:close':'fluent-mdl2:numbered-list-text-mirrored'" dynamic/>
@@ -39,6 +39,9 @@ const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
               </ULink>
             </div>
             <Connect/>
+          </div>
+          <div>
+            <ThemeSwitch/>
           </div>
         </nav>
       </UContainer>
