@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import {ethers} from "ethers";
+import {asyncComputed} from "@vueuse/core";
+
+/**
+ * @dev notification composable setup
+ */
+const toast = useToast();
 
 /**
  * @dev environment composable setup
  */
-import {useEnv} from "~/composables/useEnv";
-
 const {chain, contract} = useEnv();
 
 /**
@@ -27,8 +31,8 @@ const eth = new EthereumClient(contract, chain.rpcUrl, chain.id, abi);
 /**
  * @dev wallet composable
  */
-import {useWallet} from "~/composables/useWallet";
-
+import {useOnboard} from "@web3-onboard/vue";
+const {connectedWallet} = useOnboard();
 const {isConnected, getSigner} = useWallet();
 
 /**
@@ -41,14 +45,88 @@ const mint = async () => {
   state.isMinting = true;
   try {
     const signer: ethers.JsonRpcSigner = await getSigner() as ethers.JsonRpcSigner;
-    const tx = await eth.contract.connect(signer).mint(state.mintAmount, {value: cost});
-    await tx.wait();
+    const tx = await eth.contract.connect(signer).mint(state.mintAmount, {value: cost})
+    await tx.wait()
+    toast.clear()
+    toast.add({
+      id: 'success',
+      ui: {
+        background: 'bg-gray-800 dark:bg-gray-800'
+      },
+      color: 'green',
+      title: 'Minted',
+      description: `Your NFT has been minted successfully.`,
+      icon: 'i-octicon-check-24',
+      timeout: 5000,
+    });
+    state.isMinting = false;
   } catch (e) {
     console.error(e);
+    toast.clear();
+    toast.add({
+      id: 'error',
+      color: 'red',
+      title: 'Error minting',
+      description: `There was an error minting your NFT. Please try again.`,
+      icon: 'i-octicon-alert-24',
+      timeout: 5000,
+    });
   }
   state.isMinting = false;
 }
 
+/**
+ * @dev check if chain is correct.
+ */
+const isChainCorrect = asyncComputed(async () => {
+  const provider = connectedWallet.value?.provider as ethers.Eip1193Provider
+  let check = false
+  await provider.request({method: 'eth_chainId'}).then((_chainId: string) => {
+    console.log("Chain ID: ", _chainId,)
+    check = _chainId === chain.id
+  })
+  return check
+})
+
+/**
+ * @dev watch for chain change and change-action on notification.
+ */
+watch(() => isChainCorrect.value, (val) => {
+  console.log("ChainCorrect::", val)
+  if (!val) {
+    toast.add({
+      title: 'Wrong Chain',
+      description: `Please switch to ${chain.label}`,
+      color: 'yellow',
+      timeout: 60000,
+      actions: [
+        {
+          label: 'Switch',
+          onClick: () => {
+            const provider = connectedWallet.value?.provider as ethers.Eip1193Provider
+            provider.request({method: 'wallet_switchEthereumChain', params: [{chainId: chain.id}]}).then(() => {
+              toast.add({
+                title: 'Chain Switched',
+                description: `Switched to ${chain.label}`,
+                color: 'green',
+                timeout: 5000,
+              })
+            }).catch((error) => {
+              toast.add({
+                title: 'Chain Switch Failed',
+                description: `Failed to switch to ${chain.label}`,
+                color: 'red',
+                timeout: 5000,
+              })
+            })
+          }
+        }
+      ]
+    })
+  } else {
+    toast.remove('Wrong Chain')
+  }
+})
 </script>
 <template>
   <UContainer>
@@ -56,7 +134,7 @@ const mint = async () => {
       <h1>Mint</h1>
       <UForm :state="state">
         <UInput v-model="state.mintAmount" label="Amount" :disabled="state.isMinting"/>
-        <UButton @click="mint" :loading="state.isMinting" :disabled="!isConnected">Mint</UButton>
+        <UButton @click="mint" :loading="state.isMinting" :disabled="!isConnected || !isChainCorrect">Mint</UButton>
       </UForm>
     </ClientOnly>
   </UContainer>
