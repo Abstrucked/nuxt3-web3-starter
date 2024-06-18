@@ -1,3 +1,4 @@
 [
-  "function mint(uint256 _amount) external"
+  "function mint(uint256 _amount) external",
+  "function price() external view returns (uint256)"
 ]
