@@ -1,6 +1,20 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "nuxt-web3-starter",
+  "author": {
+    "name": "Abstrucked",
+    "email": "abstrucked-github@privacyphoenix.com",
+    "url": "https://twitter.com/abstrucked"
+  },
+  "version": "1.0.0",
+  "description": "A Nuxt.js starter template with ethers and Onboard.js",
+  "keywords": [
+    "nuxt",
+    "web3",
+    "ethers",
+    "web3Onboard",
+    "web3-starter"
+  ],
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "nuxt build",
