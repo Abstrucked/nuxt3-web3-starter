@@ -12,11 +12,11 @@ const connect = async () => {
 }
 
 
-const connectedAddress = computed(() => connectedWallet.value?.accounts[0].address)
+const connectedAddress = computed(() => connectedWallet.value?.accounts[0].address as string)
 
 
 
-const isConnected = computed(() => !!connectedWallet.value?.accounts.length > 0)
+const isConnected = computed(() => ethers.isAddress(connectedAddress.value as string))
 
 
 watch(isConnected, (value) => {
