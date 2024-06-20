@@ -14,6 +14,7 @@ This template is based on the [Nuxt UI](https://ui.nuxt.com) template.
 - [ ] Event logging
 - [x] Contract interaction methods
 - [x] Basic ERC721 ABI
+- [x] Notifications
 ### Default Wallets
 - [x] Injected
 - [x] Coinbase Wallet
