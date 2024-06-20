@@ -12,11 +12,12 @@ This template is based on the [Nuxt UI](https://ui.nuxt.com) template.
 - [x] Responsive menu
 - [x] Media queries composable for mobile, tablet and desktop
 - [ ] Event logging
-- [ ] Contract interaction methods
-- [ ] Basic ERC721 ABI
+- [x] Contract interaction methods
+- [x] Basic ERC721 ABI
 ### Default Wallets
 - [x] Injected
 - [x] Coinbase Wallet
+- [x] MetaMask
 
 _For different wallets support please refer to the **web3Onboard** documentation_
 
