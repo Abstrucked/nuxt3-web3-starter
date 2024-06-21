@@ -11,7 +11,7 @@ This template is based on the [Nuxt UI](https://ui.nuxt.com) template.
 - [x] Minimalistic design with [Tailwind CSS](https://tailwindcss.com)
 - [x] Responsive menu
 - [x] Media queries composable for mobile, tablet and desktop
-- [ ] Event logging
+- [x] Event logging
 - [x] Contract interaction methods
 - [x] Basic ERC721 ABI
 - [x] Notifications

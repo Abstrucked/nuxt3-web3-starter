@@ -5,6 +5,7 @@ const links = [
   {
     name: 'Mint',
     to: '/mint',
+    variant: 'outline'
   }
 ]
 </script>
