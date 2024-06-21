@@ -37,6 +37,7 @@
     "@web3-onboard/injected-wallets": "^2.11.1",
     "@web3-onboard/transaction-preview": "^2.1.1",
     "@web3-onboard/vue": "^2.8.1",
-    "ethers": "^6.13.0"
+    "ethers": "^6.13.0",
+    "nuxi": "^3.12.0"
   }
 }

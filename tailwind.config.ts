@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        primary: 'harlequin',
+        primary: 'white',
         gray: 'cool',
         background: 'dark',
         'harlequin': {

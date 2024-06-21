@@ -32,6 +32,7 @@ const eth = new EthereumClient(contract, chain.rpcUrl, chain.id, abi);
  * @dev wallet composable
  */
 import {useOnboard} from "@web3-onboard/vue";
+import Section from "~/components/common/Section.vue";
 const {connectedWallet} = useOnboard();
 const {isConnected, getSigner} = useWallet();
 
@@ -131,11 +132,15 @@ watch(() => isChainCorrect.value, (val) => {
 <template>
   <UContainer>
     <ClientOnly>
-      <h1>Mint</h1>
-      <UForm :state="state">
-        <UInput v-model="state.mintAmount" label="Amount" :disabled="state.isMinting"/>
-        <UButton @click="mint" :loading="state.isMinting" :disabled="!isConnected || !isChainCorrect">Mint</UButton>
-      </UForm>
+     <Section variant="ring">
+       <h2>Mint</h2>
+       <UFormGroup label="Amount" hint="Max 10 Items">
+       <UForm :state="state" class="space-y-4">
+         <UInput v-model="state.mintAmount"  label="Amount" :disabled="state.isMinting"/>
+         <UButton @click="mint" :loading="state.isMinting" :disabled="!isConnected || !isChainCorrect">Mint</UButton>
+       </UForm>
+       </UFormGroup>
+     </Section>
     </ClientOnly>
   </UContainer>
 </template>

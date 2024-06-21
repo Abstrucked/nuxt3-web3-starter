@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'dark',
   },
+  tailwindcss: {
+    cssPath: '~/assets/global.css',
+  },
   runtimeConfig: {
     public: {
       testnetContract: process.env.NUXT_TESTNET_CONTRACT,
