@@ -15,6 +15,11 @@ This template is based on the [Nuxt UI](https://ui.nuxt.com) template.
 - [x] Contract interaction methods
 - [x] Basic ERC721 ABI
 - [x] Notifications
+
+## Custom Components
+- [x] Wallet widget
+- [x] Hero
+
 ### Default Wallets
 - [x] Injected
 - [x] Coinbase Wallet
