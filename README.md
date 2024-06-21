@@ -19,6 +19,7 @@ This template is based on the [Nuxt UI](https://ui.nuxt.com) template.
 ## Custom Components
 - [x] Wallet widget
 - [x] Hero
+- [x] Section
 
 ### Default Wallets
 - [x] Injected
