@@ -2,6 +2,7 @@
 @import "@nuxt/ui";
 
 
+
 :root {
   --ui-bg: var(--color-orchid-50);
   --ui-text: var(--color-thunder-950);
@@ -13,7 +14,8 @@
 }
 
 @theme static {
-  --font-display: "Roboto", "sans-serif";
+  --font-sans: "Raleway", "sans-serif";
+  --font-mono: "Source Code Pro";
 
   --color-gray-50: #f7f7f8;
 --color-gray-100: #f1f1f2;
@@ -68,9 +70,5 @@
   --color-orchid-800: #6f396d;
   --color-orchid-900: #5d325b;
   --color-orchid-950: #3a1838;
-
-
 }
-
-
 
