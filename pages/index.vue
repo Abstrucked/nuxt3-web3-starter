@@ -6,7 +6,7 @@ const links: ButtonProps[] = [
   {
     label: 'Mint',
     to: '/mint',
-    variant: 'outline'
+    variant: 'solid'
   }
 ]
 
