@@ -28,6 +28,18 @@ web3Onboard.value = init({
   }
 })
 
+useServerSeoMeta({
+  title: "Web3 starter",
+  description: "built with Nuxt3, NuxtUI-v3, ethersjs",
+  author: "abstrucked.eth"
+})
+
+useServerHead({
+  bodyAttrs: {
+    class: "font-mono"
+  }
+})
+
 </script>
 <template>
   <UApp>

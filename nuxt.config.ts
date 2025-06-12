@@ -2,16 +2,28 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/image", "@nuxt/fonts"],
+
   colorMode: {
     preference: 'dark',
   },
+
+  fonts: {
+    families: [
+      { name: 'Raleway', provider: 'google' },
+      { name: 'Source Code Pro', provider: 'google' },
+
+    ]
+  },
+
   css: ["@/assets/css/global.css"],
+
   ui: {
     colorMode: true,
     theme: {
       colors: ["primary", "secondary", "success", "neutral", "error", "warning", "orchid"]
     }
   },
+
   runtimeConfig: {
     public: {
       testnetContract: process.env.NUXT_TESTNET_CONTRACT,
