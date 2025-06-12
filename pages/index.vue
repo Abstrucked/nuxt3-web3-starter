@@ -1,24 +1,20 @@
 <script setup lang="ts">
 import Hero from '@/components/common/Hero.vue'
 import Section from '@/components/common/Section.vue'
-const links = [
+import type { ButtonProps } from '@nuxt/ui';
+const links: ButtonProps[] = [
   {
-    name: 'Mint',
+    label: 'Mint',
     to: '/mint',
     variant: 'outline'
   }
 ]
+
 </script>
 <template>
   <UContainer>
-    <Hero
-        title="Welcome!"
-        icon="logo_base.png"
-        subtitle="Hero component with links and icon"
-        :links="links"
-        class-name="sm:justify-center"
-        background-color="bg-gray-100 dark:bg-gray-900"
-    />
+    <Hero title="Welcome!" icon="logo_base.png" subtitle="Hero component with links and icon" :links="links"
+      class-name="sm:justify-center" variant="outline" color="primary" />
     <Section class-name="p-6 ring-gray-100 dark:ring-gray-800" variant="ring">
       <h5>Section Component</h5>
       <div class="p-4">
